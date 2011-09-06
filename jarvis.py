@@ -14,8 +14,8 @@ sys.path.append(os.getcwd() + "\\config")
 # userconfig variable
 first_name = 'John'
 last_name = 'Doe'
-city = 'New York'
-location_id = '10001'
+city = 'Hamilton'
+country = 'Canada'
 email_username = 'default@gmail.com'
 email_password = '1234'
 
@@ -90,16 +90,28 @@ def get_date():
 
 def get_weather():
     """Return the weather temperature and conditions for the day."""
+<<<<<<< HEAD
     weather = pywapi.get_weather_from_google('hamilton', 'Canada')
     
     current_condition = string.lower(weather['current_conditions']['condition'])
     current_temp = weather['current_conditions']['temp_c']
     high_temp = weather['forecasts'][0]['high']
     low_temp = weather['forecasts'][0]['low']
+=======
+    weather = pywapi.get_weather_from_google(city, country)
+    
+    current_condition = string.lower(weather['current_conditions']['condition'])
+    current_temp = weather['current_conditions']['temp_c']
+    high_temp_f = weather['forecasts'][0]['high']
+    low_temp_f = weather['forecasts'][0]['low']
+    
+    high_temp_c = int(round((int(high_temp_f) - 32) / 1.8))
+    low_temp_c = int(round((int(low_temp_f) - 32) / 1.8))
+>>>>>>> upstream/master
     
     return 'The weather in ' + city + ' is currently ' + current_condition + \
            ' with a temperature of ' + current_temp + ' degrees. Today there ' + \
-           'will be a high of ' + high_temp + ', and a low of ' + low_temp + '. '
+           'will be a high of ' + str(high_temp_c) + ', and a low of ' + str(low_temp_c) + '. '
 
 def get_newmail_count():
     """Return the number of new email from gmail."""

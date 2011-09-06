@@ -11,7 +11,7 @@ import sys
 sys.path.append(os.getcwd() + "\\config")
 
 
-# userconfig variables 
+# userconfig variable
 first_name = 'John'
 last_name = 'Doe'
 city = 'New York'
@@ -29,8 +29,8 @@ except ImportError:
 
 def get_greeting():
     """Return a randomized, personalized greeting."""
-    name_chance = random.uniform(0,100)
-    greeting_chance = random.uniform(0,100)
+    name_chance = random.uniform(0, 100)
+    greeting_chance = random.uniform(0, 100)
     
     if (name_chance <= 25): 
         name = ', Mr. ' + last_name + '. '
@@ -47,11 +47,11 @@ def get_greeting():
         greeting = 'Hi' + name
     else:
         hour = int(time.strftime("%H", time.localtime()))
-        if (hour >=0  and hour < 5):
+        if (hour >= 0  and hour < 5):
             greeting = 'Good night' + name
-        elif (hour >=5  and hour < 12):
+        elif (hour >= 5  and hour < 12):
             greeting = 'Good morning' + name
-        elif (hour >=12 and hour < 17):
+        elif (hour >= 12 and hour < 17):
             greeting = 'Good afternoon' + name
         else:
             greeting = 'Good evening' + name
@@ -60,7 +60,7 @@ def get_greeting():
 
 def get_signoff():
     """Return a sign off depending on the time of day."""
-    name_chance = random.uniform(0,100)
+    name_chance = random.uniform(0, 100)
     
     if (name_chance <= 33):
         name = ' ' + first_name + '. '
@@ -110,7 +110,7 @@ def get_newmail_count():
     connection = imaplib.IMAP4_SSL("imap.gmail.com", 993)
     connection.login(email_username, email_password)
     
-    unreadCount = int(re.search("UNSEEN (\d+)", 
+    unreadCount = int(re.search("UNSEEN (\d+)",
                       connection.status("INBOX", "(UNSEEN)")[1][0]).group(1))
     
     if (unreadCount == 0):

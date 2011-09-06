@@ -90,10 +90,10 @@ def get_date():
 
 def get_weather():
     """Return the weather temperature and conditions for the day."""
-    weather = pywapi.get_weather_from_yahoo(location_id, 'metric')
+    weather = pywapi.get_weather_from_google('hamilton', 'Canada')
     
-    current_condition = string.lower(weather['condition']['text'])
-    current_temp = weather['condition']['temp']
+    current_condition = string.lower(weather['current_conditions']['condition'])
+    current_temp = weather['current_conditions']['temp_c']
     high_temp = weather['forecasts'][0]['high']
     low_temp = weather['forecasts'][0]['low']
     
